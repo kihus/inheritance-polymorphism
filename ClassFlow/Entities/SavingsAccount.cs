@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassFlow.Entities
 {
-	internal class SavingsAccount : Account
+	sealed class SavingsAccount : Account
 	{
 		public double InterestRate{ get; set; }
 
@@ -24,9 +24,10 @@ namespace ClassFlow.Entities
 			Balance += Balance * InterestRate;
 		}
 
-		public override void WithDraw(double amount)
+		public sealed override void WithDraw(double amount)
 		{
-			Balance -= amount;
+			base.WithDraw(amount);
+			Balance -= 2.0;
 		}
 	}
 }
