@@ -1,4 +1,6 @@
-﻿namespace ClassFlow.Entities
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace ClassFlow.Entities
 {
 	internal class Account
 	{
@@ -17,9 +19,10 @@
 			Balance = balance;
 		}
 
-		public void WithDraw(double amount)
+		public virtual void WithDraw(double amount)
 		{
-			Balance -= amount;
+			double tax = 5.0;
+			Balance -= amount + tax;
 		}
 
 		public void Deposit(double amount)
